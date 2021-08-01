@@ -13,10 +13,13 @@ public class DataGenerator {
     private DataGenerator() {
     }
 
-    public static String generateDate() {
+    public static String generateDate(int plusdays) {
         LocalDate todayPlus = LocalDate.now();
-        return todayPlus.plusDays(3).format(DateTimeFormatter.ofPattern("dd.MM.yyyy"));
-    }
+        LocalDate date = todayPlus.plusDays(plusdays);
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd.MM.yyyy");
+        String deliveryDate = date.format(formatter);
+        return deliveryDate;
+        }
 
     public static String generateCity(String locale) {
         Faker faker = new Faker(new Locale(locale));
@@ -42,7 +45,6 @@ public class DataGenerator {
                     generateCity(locale),
                     generateName(locale),
                     generatePhone(locale));
-
         }
     }
 
