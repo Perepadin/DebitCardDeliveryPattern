@@ -25,15 +25,15 @@ public class DebitCardDeliveryTestPattern {
     void shouldShortTestPassed() {
         var plusDaysForFirstDate = 4;
         var firstDate = DataGenerator.generateDate(plusDaysForFirstDate);
-        var registeredUser = DataGenerator.Registration.generateByCard("ru");
+        var validUser = DataGenerator.Registration.generateByCard("ru");
 
         SelenideElement form = $(".form");
-        form.$("[data-test-id=city] input").setValue(registeredUser.getCity());
+        form.$("[data-test-id=city] input").setValue(validUser.getCity());
         $("[data-test-id=date]").$("[class='input__control']").click();
         $("[data-test-id=date]").$("[class='input__control']").sendKeys(Keys.chord(Keys.CONTROL + "A", Keys.DELETE));
         form.$("[data-test-id=date] input").setValue(firstDate);
-        form.$("[data-test-id=name] input").setValue(registeredUser.getName());
-        form.$("[data-test-id=phone] input").setValue(registeredUser.getPhone());
+        form.$("[data-test-id=name] input").setValue(validUser.getName());
+        form.$("[data-test-id=phone] input").setValue(validUser.getPhone());
         form.$("[data-test-id=agreement]").click();
         form.$$("[role=button]").find(exactText("Запланировать")).click();
         $("[data-test-id=success-notification] .notification__content").shouldBe(visible, Duration.ofSeconds(15))
@@ -46,15 +46,15 @@ public class DebitCardDeliveryTestPattern {
         var firstDate = DataGenerator.generateDate(plusDaysForFirstMeeting);
         var plusDaysForSecondDate = 10;
         var secondDate = DataGenerator.generateDate(plusDaysForSecondDate);
-        var registeredUser = DataGenerator.Registration.generateByCard("ru");
+        var validUser = DataGenerator.Registration.generateByCard("ru");
 
         SelenideElement form = $(".form");
-        form.$("[data-test-id=city] input").setValue(registeredUser.getCity());
+        form.$("[data-test-id=city] input").setValue(validUser.getCity());
         $("[data-test-id=date]").$("[class='input__control']").click();
         $("[data-test-id=date]").$("[class='input__control']").sendKeys(Keys.chord(Keys.CONTROL + "A", Keys.DELETE));
         form.$("[data-test-id=date] input").setValue(firstDate);
-        form.$("[data-test-id=name] input").setValue(registeredUser.getName());
-        form.$("[data-test-id=phone] input").setValue(registeredUser.getPhone());
+        form.$("[data-test-id=name] input").setValue(validUser.getName());
+        form.$("[data-test-id=phone] input").setValue(validUser.getPhone());
         form.$("[data-test-id=agreement]").click();
         form.$$("[role=button]").find(exactText("Запланировать")).click();
         $("[data-test-id=success-notification] .notification__content").shouldBe(visible, Duration.ofSeconds(15))
