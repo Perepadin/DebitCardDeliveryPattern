@@ -36,7 +36,8 @@ public class DebitCardDeliveryTestPattern {
         form.$("[data-test-id=phone] input").setValue(registeredUser.getPhone());
         form.$("[data-test-id=agreement]").click();
         form.$$("[role=button]").find(exactText("Запланировать")).click();
-        $("[data-test-id=success-notification] .notification__content").shouldBe(visible, Duration.ofSeconds(15)).shouldHave(exactText("Встреча успешно запланирована на " + firstDate));
+        $("[data-test-id=success-notification] .notification__content").shouldBe(visible, Duration.ofSeconds(15))
+                .shouldHave(exactText("Встреча успешно запланирована на " + firstDate));
     }
 
     @Test
@@ -56,13 +57,15 @@ public class DebitCardDeliveryTestPattern {
         form.$("[data-test-id=phone] input").setValue(registeredUser.getPhone());
         form.$("[data-test-id=agreement]").click();
         form.$$("[role=button]").find(exactText("Запланировать")).click();
-        $("[data-test-id=success-notification] .notification__content").shouldBe(visible, Duration.ofSeconds(15)).shouldHave(exactText("Встреча успешно запланирована на " + firstDate));
+        $("[data-test-id=success-notification] .notification__content").shouldBe(visible, Duration.ofSeconds(15))
+                .shouldHave(exactText("Встреча успешно запланирована на " + firstDate));
 
         $("[data-test-id=date]").$("[class='input__control']").click();
         $("[data-test-id=date]").$("[class='input__control']").sendKeys(Keys.chord(Keys.CONTROL + "A", Keys.DELETE));
         form.$("[data-test-id=date] input").setValue(secondDate);
         form.$$("[role=button]").find(exactText("Запланировать")).click();
-        $("[data-test-id=replan-notification] .notification__content").shouldBe(visible, Duration.ofSeconds(15)).shouldHave(exactText("У вас уже запланирована встреча на другую дату. Перепланировать?\n" +
+        $("[data-test-id=replan-notification] .notification__content").shouldBe(visible, Duration.ofSeconds(15))
+                .shouldHave(exactText("У вас уже запланирована встреча на другую дату. Перепланировать?\n" +
                 "\n" +
                 "Перепланировать"));
         $("[data-test-id=replan-notification] .button__text").shouldBe(visible, Duration.ofSeconds(15)).shouldHave(exactText("Перепланировать")).click();
